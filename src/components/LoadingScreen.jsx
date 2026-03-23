@@ -17,7 +17,6 @@ export default function LoadingScreen({ onFinish }) {
     "Initializing Developer Journey..."
   ];
 
-  // ✅ Typing function (fixed)
   const typeText = (text) => {
     return new Promise((resolve) => {
       let i = 0;
@@ -33,7 +32,7 @@ export default function LoadingScreen({ onFinish }) {
 
         if (i === text.length) {
           clearInterval(typingRef.current);
-          setTimeout(resolve, 800); // pause after typing
+          setTimeout(resolve, 800);
         }
       }, 35);
     });
@@ -44,44 +43,36 @@ export default function LoadingScreen({ onFinish }) {
     hasRun.current = true;
 
     const runAnimation = async () => {
-      // Fade in
       gsap.fromTo(containerRef.current, 
         { opacity: 0 }, 
         { opacity: 1, duration: 1 }
       );
 
-      // Character appears
       gsap.fromTo(
         characterRef.current,
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 1 }
       );
 
-      // Wait for intro
       await new Promise((res) => setTimeout(res, 1500));
 
-      // ✅ Show messages one by one
       for (let msg of messages) {
         await typeText(msg);
       }
 
-      // Fade out character + text
       gsap.to([characterRef.current, textRef.current], {
         opacity: 0,
         duration: 0.5
       });
 
-      // Show video
       gsap.to(videoRef.current, {
         opacity: 1,
         duration: 1,
         onStart: () => videoRef.current.play(),
       });
 
-      // Video duration
       await new Promise((res) => setTimeout(res, 3000));
 
-      // Fade out everything
       gsap.to(containerRef.current, {
         opacity: 0,
         duration: 1,
@@ -91,7 +82,6 @@ export default function LoadingScreen({ onFinish }) {
 
     runAnimation();
 
-    // cleanup
     return () => {
       if (typingRef.current) clearInterval(typingRef.current);
     };
@@ -100,20 +90,23 @@ export default function LoadingScreen({ onFinish }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 bg-black flex items-center justify-center z-[9999]"
+      className="fixed inset-0 bg-black flex items-center justify-center z-[9999] overflow-hidden"
     >
-      {/* Character */}
-      <div className="absolute flex flex-col items-center text-center">
+      {/* Character Section */}
+      <div className="absolute flex flex-col items-center text-center px-4 sm:px-6 md:px-0 max-w-[90%] sm:max-w-[80%] md:max-w-none">
+        
         <img
           ref={characterRef}
           src="/character.svg"
           alt="thinking developer"
-          className="w-40 md:w-64"
+          className="w-28 sm:w-36 md:w-48 lg:w-64 max-w-full h-auto"
         />
 
         <h1
           ref={textRef}
-          className="text-green-400 text-xl md:text-3xl font-mono mt-6"
+          className="text-green-400 font-mono mt-4 sm:mt-5 md:mt-6 
+                     text-sm sm:text-lg md:text-2xl lg:text-3xl 
+                     leading-relaxed break-words"
         >
           <span className="animate-pulse ml-1">|</span>
         </h1>
@@ -122,7 +115,7 @@ export default function LoadingScreen({ onFinish }) {
       {/* Video */}
       <video
         ref={videoRef}
-        className="absolute w-full h-full object-cover opacity-0"
+        className="absolute inset-0 w-full h-full object-cover opacity-0"
         muted
         playsInline
       >
@@ -130,7 +123,7 @@ export default function LoadingScreen({ onFinish }) {
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/50"></div>
     </div>
   );
 }
