@@ -388,7 +388,29 @@ function JourneySection({ path }) {
             )}
           </div>
         ))}
-        
+        {/* Start button */}
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={() => {
+              document.getElementById("next-section")?.scrollIntoView({
+                behavior: "smooth",
+              });
+            }}
+            className={`group relative px-10 py-4 rounded-full font-mono text-[13px]
+            font-bold tracking-[0.15em] uppercase text-black cursor-pointer
+            transition-all duration-300 ease-out
+            hover:scale-105 hover:-translate-y-1 active:scale-95
+            ${tw.dot.split(" ")[0]}`}
+            style={{
+              boxShadow: `0 0 30px ${path.accent}44, 0 10px 40px rgba(0,0,0,0.5)`,
+            }}
+          >
+            <span className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+              <span className="absolute top-0 left-[-75%] w-1/2 h-full bg-white/30 skew-x-[-20deg] group-hover:left-[150%] transition-all duration-700 ease-in-out" />
+            </span>
+            <span className="relative z-10">Begin {path.label} Journey →</span>
+          </button>
+        </div>
       </div>
     </div>
   );
