@@ -273,7 +273,7 @@ function PathCard({ path, selected, anySelected, onClick }) {
 }
 
 /* ─── JourneySection ───────────────────────────────────────── */
-function JourneySection({ path }) {
+function JourneySection({ path,onStart }) {
   const wrapRef = useRef();
   const itemRefs = useRef([]);
 
@@ -391,10 +391,8 @@ function JourneySection({ path }) {
         {/* Start button */}
         <div className="flex justify-center mt-10">
           <button
-            onClick={() => {
-              document.getElementById("next-section")?.scrollIntoView({
-                behavior: "smooth",
-              });
+            onClick={()=>{onStart()
+              
             }}
             className={`group relative px-10 py-4 rounded-full font-mono text-[13px]
             font-bold tracking-[0.15em] uppercase text-black cursor-pointer
@@ -417,7 +415,7 @@ function JourneySection({ path }) {
 }
 
 /* ─── HeroSection (main) ───────────────────────────────────── */
-export default function HeroSection() {
+export default function HeroSection({onStart}) {
   const [selected, setSelected] = useState(null);
   const [showJourney, setShowJourney] = useState(false);
   const [bgAccent, setBgAccent] = useState(null);
@@ -718,7 +716,7 @@ export default function HeroSection() {
           minHeight: showJourney ? "auto" : 0,
         }}
       >
-        {showJourney && <JourneySection path={selectedPath} />}
+        {showJourney && <JourneySection path={selectedPath} onStart={onStart} />}
       </div>
     </>
   );

@@ -401,7 +401,7 @@ export default function LearningSection() {
 
       <section
         ref={sectionRef}
-        id="next-section"
+        id="learning-section"
         className="relative min-h-screen bg-[#070b0f] flex flex-col items-center
           justify-center overflow-hidden px-4 sm:px-6 md:px-10 py-20"
       >
