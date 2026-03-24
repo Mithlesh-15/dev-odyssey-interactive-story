@@ -146,7 +146,7 @@ export default function LoadingScreen({ onFinish }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden"
+      className="fixed inset-0 z-9999 bg-black flex items-center justify-center overflow-hidden"
       style={{ opacity: 0 }}
     >
       {/* Scanlines */}
@@ -235,7 +235,7 @@ export default function LoadingScreen({ onFinish }) {
         </div>
 
         {/* Typing area */}
-        <div className="ls-text-area min-h-[52px] flex flex-col items-center gap-1">
+        <div className="ls-text-area min-h-13 flex flex-col items-center gap-1">
           <h1
             ref={typingRef}
             className="font-mono text-green-400 text-sm sm:text-base md:text-xl leading-relaxed max-w-xs sm:max-w-sm"
