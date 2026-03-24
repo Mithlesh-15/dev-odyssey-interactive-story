@@ -97,57 +97,7 @@ const PATHS = [
       },
     ],
   },
-  {
-    id: "ai",
-    emoji: "🤖",
-    label: "AI Developer",
-    tag: "ML · LLMs · Neural Nets",
-    accent: "#a78bfa",
-    glow: "rgba(167,139,250,0.18)",
-    border: "rgba(167,139,250,0.55)",
-    bg: "rgba(167,139,250,0.06)",
-    tw: {
-      accent: "text-violet-400",
-      border: "border-violet-400/50",
-      bg: "bg-violet-400/[0.06]",
-      dot: "bg-violet-400 shadow-[0_0_12px_#a78bfa]",
-      tag: "text-violet-400/80",
-      bar: "from-violet-400",
-      stepBorder: "border-violet-400/40",
-      stepBg: "bg-violet-400/[0.07]",
-      numBg: "bg-violet-400 text-black",
-      start: "text-violet-400",
-      cardGlow:
-        "shadow-[0_0_40px_rgba(167,139,250,0.18),0_20px_60px_rgba(0,0,0,0.4)]",
-    },
-    journey: [
-      {
-        icon: "🧮",
-        step: "Python & Math",
-        desc: "Numpy, Pandas, Linear Algebra.",
-      },
-      {
-        icon: "🧠",
-        step: "Machine Learning",
-        desc: "Supervised, unsupervised, reinforced.",
-      },
-      {
-        icon: "🔥",
-        step: "Deep Learning",
-        desc: "PyTorch, TensorFlow, neural nets.",
-      },
-      {
-        icon: "💬",
-        step: "LLMs & Prompt Eng.",
-        desc: "Build with GPT, Claude, Gemini.",
-      },
-      {
-        icon: "🌍",
-        step: "Deploy AI Products",
-        desc: "APIs, agents, real-world impact.",
-      },
-    ],
-  },
+  
 ];
 
 /* ─── Particle ─────────────────────────────────────────────── */
