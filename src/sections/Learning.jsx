@@ -9,65 +9,183 @@ gsap.registerPlugin(ScrollTrigger);
 ══════════════════════════════════════════════ */
 const PHASES = [
   {
-    id: "html", label: "HTML", color: "#e34c26", glow: "rgba(227,76,38,0.22)",
-    tailwindColor: "text-orange-500", tailwindBorder: "border-orange-500/40",
-    tailwindBg: "bg-orange-500/10", tailwindGlow: "shadow-orange-500/20",
-    emotion: "Curiosity", emotionEmoji: "🤔",
+    id: "html",
+    label: "HTML",
+    color: "#e34c26",
+    glow: "rgba(227,76,38,0.22)",
+    tailwindColor: "text-orange-500",
+    tailwindBorder: "border-orange-500/40",
+    tailwindBg: "bg-orange-500/10",
+    tailwindGlow: "shadow-orange-500/20",
+    emotion: "Curiosity",
+    emotionEmoji: "🤔",
     desc: "Structure. The skeleton of the web.",
-    filename: "index.html", fileIcon: "🟠",
+    filename: "index.html",
+    fileIcon: "🟠",
     lines: [
       [{ t: "tag", v: "<!DOCTYPE html>" }],
       [{ t: "tag", v: "<html>" }],
       [{ t: "tag", v: "  <head>" }],
-      [{ t: "tag", v: "    <title>" }, { t: "string", v: "My First Page", tooltip: true }, { t: "tag", v: "</title>" }],
+      [
+        { t: "tag", v: "    <title>" },
+        { t: "string", v: "My First Page", tooltip: true },
+        { t: "tag", v: "</title>" },
+      ],
       [{ t: "tag", v: "  </head>" }],
       [{ t: "tag", v: "  <body>" }],
-      [{ t: "tag", v: "    <h1>" }, { t: "plain", v: "Hello, World!" }, { t: "tag", v: "</h1>" }],
-      [{ t: "tag", v: "    <p>" }, { t: "plain", v: "I am learning to code." }, { t: "tag", v: "</p>" }],
-      [{ t: "tag", v: "    <button id=" }, { t: "string", v: '"myBtn"' }, { t: "tag", v: ">Click Me</button>" }],
+      [
+        { t: "tag", v: "    <h1>" },
+        { t: "plain", v: "Hello, World!" },
+        { t: "tag", v: "</h1>" },
+      ],
+      [
+        { t: "tag", v: "    <p>" },
+        { t: "plain", v: "I am learning to code." },
+        { t: "tag", v: "</p>" },
+      ],
+      [
+        { t: "tag", v: "    <button id=" },
+        { t: "string", v: '"myBtn"' },
+        { t: "tag", v: ">Click Me</button>" },
+      ],
       [{ t: "tag", v: "  </body>" }],
       [{ t: "tag", v: "</html>" }],
     ],
   },
   {
-    id: "css", label: "CSS", color: "#264de4", glow: "rgba(38,77,228,0.22)",
-    tailwindColor: "text-blue-500", tailwindBorder: "border-blue-500/40",
-    tailwindBg: "bg-blue-500/10", tailwindGlow: "shadow-blue-500/20",
-    emotion: "Creativity", emotionEmoji: "🎨",
+    id: "css",
+    label: "CSS",
+    color: "#264de4",
+    glow: "rgba(38,77,228,0.22)",
+    tailwindColor: "text-blue-500",
+    tailwindBorder: "border-blue-500/40",
+    tailwindBg: "bg-blue-500/10",
+    tailwindGlow: "shadow-blue-500/20",
+    emotion: "Creativity",
+    emotionEmoji: "🎨",
     desc: "Style. Now it starts to look alive.",
-    filename: "styles.css", fileIcon: "🔵",
+    filename: "styles.css",
+    fileIcon: "🔵",
     lines: [
-      [{ t: "selector", v: "body" }, { t: "plain", v: " {" }],
-      [{ t: "prop", v: "  background" }, { t: "plain", v: ": " }, { t: "value", v: "#0d1117" }, { t: "plain", v: ";" }],
-      [{ t: "prop", v: "  font-family" }, { t: "plain", v: ": " }, { t: "value", v: "'Segoe UI', sans-serif" }, { t: "plain", v: ";" }],
+      [
+        { t: "selector", v: "body" },
+        { t: "plain", v: " {" },
+      ],
+      [
+        { t: "prop", v: "  background" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "#0d1117" },
+        { t: "plain", v: ";" },
+      ],
+      [
+        { t: "prop", v: "  font-family" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "'Segoe UI', sans-serif" },
+        { t: "plain", v: ";" },
+      ],
       [{ t: "plain", v: "}" }],
       [{ t: "plain", v: "" }],
-      [{ t: "selector", v: "h1" }, { t: "plain", v: " {" }],
-      [{ t: "prop", v: "  color" }, { t: "plain", v: ": " }, { t: "value", v: "#00ff88" }, { t: "plain", v: ";" }],
-      [{ t: "prop", v: "  font-size" }, { t: "plain", v: ": " }, { t: "value", v: "3rem" }, { t: "plain", v: ";" }],
-      [{ t: "prop", v: "  text-shadow" }, { t: "plain", v: ": " }, { t: "value", v: "0 0 20px #00ff88" }, { t: "plain", v: ";" }],
+      [
+        { t: "selector", v: "h1" },
+        { t: "plain", v: " {" },
+      ],
+      [
+        { t: "prop", v: "  color" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "#00ff88" },
+        { t: "plain", v: ";" },
+      ],
+      [
+        { t: "prop", v: "  font-size" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "3rem" },
+        { t: "plain", v: ";" },
+      ],
+      [
+        { t: "prop", v: "  text-shadow" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "0 0 20px #00ff88" },
+        { t: "plain", v: ";" },
+      ],
       [{ t: "plain", v: "}" }],
       [{ t: "plain", v: "" }],
-      [{ t: "selector", v: "button" }, { t: "plain", v: " {" }],
-      [{ t: "prop", v: "  background" }, { t: "plain", v: ": " }, { t: "value", v: "#00ff88" }, { t: "plain", v: ";" }],
-      [{ t: "prop", v: "  border-radius" }, { t: "plain", v: ": " }, { t: "value", v: "8px" }, { t: "plain", v: ";" }],
+      [
+        { t: "selector", v: "button" },
+        { t: "plain", v: " {" },
+      ],
+      [
+        { t: "prop", v: "  background" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "#00ff88" },
+        { t: "plain", v: ";" },
+      ],
+      [
+        { t: "prop", v: "  border-radius" },
+        { t: "plain", v: ": " },
+        { t: "value", v: "8px" },
+        { t: "plain", v: ";" },
+      ],
       [{ t: "plain", v: "}" }],
     ],
   },
   {
-    id: "js", label: "JavaScript", color: "#f7df1e", glow: "rgba(247,223,30,0.18)",
-    tailwindColor: "text-yellow-400", tailwindBorder: "border-yellow-400/40",
-    tailwindBg: "bg-yellow-400/10", tailwindGlow: "shadow-yellow-400/20",
-    emotion: "Excitement", emotionEmoji: "⚡",
+    id: "js",
+    label: "JavaScript",
+    color: "#f7df1e",
+    glow: "rgba(247,223,30,0.18)",
+    tailwindColor: "text-yellow-400",
+    tailwindBorder: "border-yellow-400/40",
+    tailwindBg: "bg-yellow-400/10",
+    tailwindGlow: "shadow-yellow-400/20",
+    emotion: "Excitement",
+    emotionEmoji: "⚡",
     desc: "Logic. Now things actually happen.",
-    filename: "app.js", fileIcon: "🟡",
+    filename: "app.js",
+    fileIcon: "🟡",
     lines: [
-      [{ t: "keyword", v: "const" }, { t: "plain", v: " " }, { t: "var", v: "btn" }, { t: "plain", v: " = document." }, { t: "fn", v: "getElementById" }, { t: "plain", v: "(" }, { t: "string", v: '"myBtn"' }, { t: "plain", v: ");" }],
-      [{ t: "keyword", v: "const" }, { t: "plain", v: " " }, { t: "var", v: "title" }, { t: "plain", v: " = document." }, { t: "fn", v: "querySelector" }, { t: "plain", v: "(" }, { t: "string", v: '"h1"' }, { t: "plain", v: ");" }],
+      [
+        { t: "keyword", v: "const" },
+        { t: "plain", v: " " },
+        { t: "var", v: "btn" },
+        { t: "plain", v: " = document." },
+        { t: "fn", v: "getElementById" },
+        { t: "plain", v: "(" },
+        { t: "string", v: '"myBtn"' },
+        { t: "plain", v: ");" },
+      ],
+      [
+        { t: "keyword", v: "const" },
+        { t: "plain", v: " " },
+        { t: "var", v: "title" },
+        { t: "plain", v: " = document." },
+        { t: "fn", v: "querySelector" },
+        { t: "plain", v: "(" },
+        { t: "string", v: '"h1"' },
+        { t: "plain", v: ");" },
+      ],
       [{ t: "plain", v: "" }],
-      [{ t: "var", v: "btn" }, { t: "plain", v: "." }, { t: "fn", v: "addEventListener" }, { t: "plain", v: "(" }, { t: "string", v: '"click"' }, { t: "plain", v: ", () => {" }],
-      [{ t: "var", v: "  title" }, { t: "plain", v: ".textContent = " }, { t: "string", v: '"You are a developer! 🚀"' }, { t: "plain", v: ";" }],
-      [{ t: "fn", v: "  console" }, { t: "plain", v: "." }, { t: "fn", v: "log" }, { t: "plain", v: "(" }, { t: "string", v: '"It works! 🎉"' }, { t: "plain", v: ");" }],
+      [
+        { t: "var", v: "btn" },
+        { t: "plain", v: "." },
+        { t: "fn", v: "addEventListener" },
+        { t: "plain", v: "(" },
+        { t: "string", v: '"click"' },
+        { t: "plain", v: ", () => {" },
+      ],
+      [
+        { t: "var", v: "  title" },
+        { t: "plain", v: ".textContent = " },
+        { t: "string", v: '"You are a developer! 🚀"' },
+        { t: "plain", v: ";" },
+      ],
+      [
+        { t: "fn", v: "  console" },
+        { t: "plain", v: "." },
+        { t: "fn", v: "log" },
+        { t: "plain", v: "(" },
+        { t: "string", v: '"It works! 🎉"' },
+        { t: "plain", v: ");" },
+      ],
       [{ t: "plain", v: "});" }],
       [{ t: "plain", v: "" }],
       [{ t: "comment", v: "// Magic happens here ✨" }],
@@ -76,9 +194,15 @@ const PHASES = [
 ];
 
 const TOKEN_COLORS = {
-  tag: "#e34c26", selector: "#7dd3fc", prop: "#9cdcfe",
-  value: "#ce9178", keyword: "#c586c0", fn: "#dcdcaa",
-  var: "#9cdcfe", string: "#ce9178", comment: "rgba(255,255,255,0.3)",
+  tag: "#e34c26",
+  selector: "#7dd3fc",
+  prop: "#9cdcfe",
+  value: "#ce9178",
+  keyword: "#c586c0",
+  fn: "#dcdcaa",
+  var: "#9cdcfe",
+  string: "#ce9178",
+  comment: "rgba(255,255,255,0.3)",
   plain: "rgba(255,255,255,0.78)",
 };
 
@@ -91,18 +215,26 @@ function PreviewPanel({ cssActive, jsActive }) {
     if (!jsActive) return;
     setClicked(true);
     if (h1Ref.current) {
-      gsap.fromTo(h1Ref.current,
+      gsap.fromTo(
+        h1Ref.current,
         { scale: 1.15, color: "#f7df1e" },
-        { scale: 1, color: cssActive ? "#00ff88" : "#fff", duration: 0.7, ease: "elastic.out(1,0.5)" }
+        {
+          scale: 1,
+          color: cssActive ? "#00ff88" : "#fff",
+          duration: 0.7,
+          ease: "elastic.out(1,0.5)",
+        },
       );
     }
   };
 
   return (
-    <div className={`relative overflow-hidden rounded-xl p-4 min-h-37.5 transition-all duration-700
-      ${cssActive
-        ? "bg-[#0d1117] border border-emerald-500/20"
-        : "bg-[#1e1e1e] border border-white/5"
+    <div
+      className={`relative overflow-hidden rounded-xl p-4 min-h-37.5 transition-all duration-700
+      ${
+        cssActive
+          ? "bg-[#0d1117] border border-emerald-500/20"
+          : "bg-[#1e1e1e] border border-white/5"
       }`}
       style={{ fontFamily: cssActive ? "'Segoe UI',sans-serif" : "serif" }}
     >
@@ -111,8 +243,12 @@ function PreviewPanel({ cssActive, jsActive }) {
       </span>
 
       {cssActive && (
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,255,136,0.05),transparent)" }}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,255,136,0.05),transparent)",
+          }}
         />
       )}
 
@@ -121,26 +257,33 @@ function PreviewPanel({ cssActive, jsActive }) {
         className="font-extrabold mb-2 transition-all duration-700 leading-tight"
         style={{
           color: cssActive ? "#00ff88" : "#ccc",
-          fontSize: cssActive ? "clamp(16px,3vw,22px)" : "clamp(14px,2.5vw,18px)",
+          fontSize: cssActive
+            ? "clamp(16px,3vw,22px)"
+            : "clamp(14px,2.5vw,18px)",
           textShadow: cssActive ? "0 0 18px rgba(0,255,136,0.5)" : "none",
         }}
       >
         {clicked ? "You are a developer! 🚀" : "Hello, World!"}
       </h1>
 
-      <p className={`text-[13px] mb-3 transition-colors duration-700 ${cssActive ? "text-white/40" : "text-white/60"}`}>
+      <p
+        className={`text-[13px] mb-3 transition-colors duration-700 ${cssActive ? "text-white/40" : "text-white/60"}`}
+      >
         I am learning to code.
       </p>
 
       <button
         onClick={handleClick}
         className={`text-xs font-bold px-4 py-1.5 border-none transition-all duration-700
-          ${cssActive
-            ? "bg-[#00ff88] text-black rounded-lg cursor-pointer hover:scale-105"
-            : "bg-[#555] text-white rounded-sm cursor-default"
+          ${
+            cssActive
+              ? "bg-[#00ff88] text-black rounded-lg cursor-pointer hover:scale-105"
+              : "bg-[#555] text-white rounded-sm cursor-default"
           }
           ${jsActive ? "cursor-pointer" : "cursor-default"}`}
-        style={{ boxShadow: cssActive ? "0 0 14px rgba(0,255,136,0.35)" : "none" }}
+        style={{
+          boxShadow: cssActive ? "0 0 14px rgba(0,255,136,0.35)" : "none",
+        }}
       >
         {jsActive ? "Click Me ⚡" : "Click Me"}
       </button>
@@ -160,29 +303,38 @@ function CodePanel({ phaseIdx, visibleCount, isActive }) {
   const [tooltip, setTooltip] = useState(false);
 
   return (
-    <div className={`bg-[#0d1117] rounded-xl overflow-hidden border transition-all duration-500
-      ${isActive
-        ? `border-[${phase.color}]/30 shadow-lg ${phase.tailwindGlow}`
-        : "border-white/5 shadow-none"
+    <div
+      className={`bg-[#0d1117] rounded-xl overflow-hidden border transition-all duration-500
+      ${
+        isActive
+          ? `border-[${phase.color}]/30 shadow-lg ${phase.tailwindGlow}`
+          : "border-white/5 shadow-none"
       }`}
       style={{
         borderColor: isActive ? `${phase.color}45` : undefined,
-        boxShadow: isActive ? `0 0 32px ${phase.glow}, 0 8px 32px rgba(0,0,0,0.4)` : undefined,
+        boxShadow: isActive
+          ? `0 0 32px ${phase.glow}, 0 8px 32px rgba(0,0,0,0.4)`
+          : undefined,
       }}
     >
       {/* Panel header */}
-      <div className={`flex items-center justify-between bg-[#0f1318] px-3 py-1.5 border-b transition-colors duration-300
+      <div
+        className={`flex items-center justify-between bg-[#0f1318] px-3 py-1.5 border-b transition-colors duration-300
         ${isActive ? "" : "border-white/5"}`}
         style={{ borderBottomColor: isActive ? `${phase.color}28` : undefined }}
       >
         <div className="flex items-center gap-1.5">
           <span className="text-[11px]">{phase.fileIcon}</span>
-          <span className={`font-mono text-[11px] transition-colors duration-300 ${isActive ? "text-white" : "text-white/35"}`}>
+          <span
+            className={`font-mono text-[11px] transition-colors duration-300 ${isActive ? "text-white" : "text-white/35"}`}
+          >
             {phase.filename}
           </span>
           {isActive && (
-            <span className="w-1.5 h-1.5 rounded-full inline-block animate-[pulse_1.5s_infinite]"
-              style={{ background: phase.color }} />
+            <span
+              className="w-1.5 h-1.5 rounded-full inline-block animate-[pulse_1.5s_infinite]"
+              style={{ background: phase.color }}
+            />
           )}
         </div>
         <span
@@ -200,10 +352,14 @@ function CodePanel({ phaseIdx, visibleCount, isActive }) {
       <div className="p-3 relative min-h-20">
         {/* Tooltip */}
         {tooltip && phaseIdx === 0 && (
-          <div className="absolute top-1.5 right-1.5 z-20 bg-[#1a2a1f] border border-emerald-500/30
+          <div
+            className="absolute top-1.5 right-1.5 z-20 bg-[#1a2a1f] border border-emerald-500/30
             rounded-xl px-3 py-2 font-mono text-[11px] text-emerald-300
-            shadow-[0_6px_20px_rgba(0,255,136,0.12)] animate-[popIn_0.3s_ease]">
-            <span className="block text-[9px] text-white/30 tracking-widest mb-1">FIRST CODE 🎯</span>
+            shadow-[0_6px_20px_rgba(0,255,136,0.12)] animate-[popIn_0.3s_ease]"
+          >
+            <span className="block text-[9px] text-white/30 tracking-widest mb-1">
+              FIRST CODE 🎯
+            </span>
             My first achievement! 😄
           </div>
         )}
@@ -214,7 +370,8 @@ function CodePanel({ phaseIdx, visibleCount, isActive }) {
             className="flex items-center transition-all duration-200"
             style={{
               opacity: li < visibleCount ? 1 : 0,
-              transform: li < visibleCount ? "translateX(0)" : "translateX(-8px)",
+              transform:
+                li < visibleCount ? "translateX(0)" : "translateX(-8px)",
             }}
           >
             <span className="font-mono text-[10px] text-white/10 w-6 shrink-0 text-right pr-2.5 leading-6 select-none">
@@ -240,7 +397,7 @@ function CodePanel({ phaseIdx, visibleCount, isActive }) {
                   >
                     {tok.v}
                   </span>
-                )
+                ),
               )}
               {li === visibleCount - 1 && visibleCount < phase.lines.length && (
                 <span
@@ -296,11 +453,19 @@ function EmotionBar({ activePhase }) {
             </div>
             <span
               className="font-mono text-[9px] tracking-widest uppercase transition-colors duration-500"
-              style={{ color: active ? p.color : done ? `${p.color}90` : "rgba(255,255,255,0.2)" }}
+              style={{
+                color: active
+                  ? p.color
+                  : done
+                    ? `${p.color}90`
+                    : "rgba(255,255,255,0.2)",
+              }}
             >
               {p.emotion}
             </span>
-            <span className={`font-mono text-[8px] tracking-wide ${active ? "text-white/45" : "text-white/15"}`}>
+            <span
+              className={`font-mono text-[8px] tracking-wide ${active ? "text-white/45" : "text-white/15"}`}
+            >
               {p.label}
             </span>
           </div>
@@ -324,7 +489,20 @@ export default function LearningSection() {
   const [achievement, setAchievement] = useState(null);
   const [allDone, setAllDone] = useState(false);
 
-  const symbols = ["{}", "=>", "</>", "div", "px", "fn()", "&&", "let", "var", "DOM", "API", "()=>"];
+  const symbols = [
+    "{}",
+    "=>",
+    "</>",
+    "div",
+    "px",
+    "fn()",
+    "&&",
+    "let",
+    "var",
+    "DOM",
+    "API",
+    "()=>",
+  ];
 
   const TOASTS = [
     { title: "HTML Unlocked 🟠", sub: "You built your first structure!" },
@@ -341,7 +519,11 @@ export default function LearningSection() {
     const total = PHASES[idx].lines.length;
     const iv = setInterval(() => {
       i++;
-      setLineCounts(prev => { const n = [...prev]; n[idx] = i; return n; });
+      setLineCounts((prev) => {
+        const n = [...prev];
+        n[idx] = i;
+        return n;
+      });
       if (i >= total) {
         clearInterval(iv);
         setTimeout(() => onDone?.(), 500);
@@ -357,25 +539,39 @@ export default function LearningSection() {
         typePhase(2, () => {
           setActivePhase(-1);
           setAllDone(true);
-        })
-      )
+        }),
+      ),
     );
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(headerRef.current,
+      gsap.fromTo(
+        headerRef.current,
         { opacity: 0, y: 44 },
-        { opacity: 1, y: 0, duration: 0.95, ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 76%" } }
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.95,
+          ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 76%" },
+        },
       );
-      gsap.fromTo(editorRef.current,
+      gsap.fromTo(
+        editorRef.current,
         { opacity: 0, y: 56, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.05, ease: "power3.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 62%" } }
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.05,
+          ease: "power3.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 62%" },
+        },
       );
       ScrollTrigger.create({
-        trigger: sectionRef.current, start: "top 38%",
+        trigger: editorRef.current,
+        start: "top 50%",
         onEnter: () => startSequence(),
       });
     }, sectionRef);
@@ -387,7 +583,10 @@ export default function LearningSection() {
 
   return (
     <>
-      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@300;400;700&display=swap"
+        rel="stylesheet"
+      />
       <style>{`
         @keyframes blink      { 0%,100%{opacity:1} 50%{opacity:0} }
         @keyframes pulse      { 0%,100%{opacity:1} 50%{opacity:0.35} }
@@ -406,16 +605,22 @@ export default function LearningSection() {
           justify-center overflow-hidden px-4 sm:px-6 md:px-10 py-20"
       >
         {/* Grid background */}
-        <div className="absolute inset-0 pointer-events-none"
+        <div
+          className="absolute inset-0 pointer-events-none"
           style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.017) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.017) 1px,transparent 1px)",
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.017) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.017) 1px,transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         />
 
         {/* Vignette */}
-        <div className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at center,transparent 28%,rgba(0,0,0,0.88) 100%)" }}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center,transparent 28%,rgba(0,0,0,0.88) 100%)",
+          }}
         />
 
         {/* Floating symbols */}
@@ -425,8 +630,8 @@ export default function LearningSection() {
               key={i}
               className="absolute font-mono select-none text-white/4.5"
               style={{
-                left: `${4 + (i * 8.2) % 90}%`,
-                top: `${8 + (i * 12) % 82}%`,
+                left: `${4 + ((i * 8.2) % 90)}%`,
+                top: `${8 + ((i * 12) % 82)}%`,
                 fontSize: `${10 + (i % 3) * 5}px`,
                 animation: `floatSym ${9 + i * 1.7}s ${i * 0.65}s ease-in-out infinite alternate`,
               }}
@@ -456,7 +661,8 @@ export default function LearningSection() {
             <span
               className="bg-clip-text text-transparent"
               style={{
-                backgroundImage: "linear-gradient(90deg,#e34c26,#264de4,#f7df1e,#e34c26)",
+                backgroundImage:
+                  "linear-gradient(90deg,#e34c26,#264de4,#f7df1e,#e34c26)",
                 backgroundSize: "300% auto",
                 animation: "shimmer 4s linear infinite",
               }}
@@ -469,8 +675,11 @@ export default function LearningSection() {
             className="font-mono text-white/25 leading-[1.9] max-w-115 mx-auto"
             style={{ fontSize: "clamp(11px,1.3vw,13px)" }}
           >
-            It starts with a single tag. Then styles. Then logic.<br />
-            <span className="text-white/45">Three languages. One journey. Let's go.</span>
+            It starts with a single tag. Then styles. Then logic.
+            <br />
+            <span className="text-white/45">
+              Three languages. One journey. Let's go.
+            </span>
           </p>
 
           <div className="mt-7">
@@ -498,24 +707,36 @@ export default function LearningSection() {
                 <p className="font-mono text-[9px] text-white/30 tracking-widest uppercase mb-0.5">
                   Achievement Unlocked
                 </p>
-                <p className="font-bold text-white text-sm" style={{ fontFamily: "'Syne',sans-serif" }}>
+                <p
+                  className="font-bold text-white text-sm"
+                  style={{ fontFamily: "'Syne',sans-serif" }}
+                >
                   {achievement.title}
                 </p>
-                <p className="font-mono text-[11px] text-white/35">{achievement.sub}</p>
+                <p className="font-mono text-[11px] text-white/35">
+                  {achievement.sub}
+                </p>
               </div>
             </div>
           )}
 
           {/* VS Code shell */}
-          <div className="rounded-2xl overflow-hidden border border-white/5
-            shadow-[0_40px_100px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.03)]">
-
+          <div
+            className="rounded-2xl overflow-hidden border border-white/5
+            shadow-[0_40px_100px_rgba(0,0,0,0.7),0_0_0_1px_rgba(255,255,255,0.03)]"
+          >
             {/* Title bar */}
-            <div className="flex items-center justify-between bg-[#0f1318] px-4 py-2.5
-              border-b border-white/5 flex-wrap gap-2">
+            <div
+              className="flex items-center justify-between bg-[#0f1318] px-4 py-2.5
+              border-b border-white/5 flex-wrap gap-2"
+            >
               <div className="flex gap-1.5">
                 {["#ff5f57", "#febc2e", "#28c840"].map((c, i) => (
-                  <div key={i} className="w-3 h-3 rounded-full" style={{ background: c }} />
+                  <div
+                    key={i}
+                    className="w-3 h-3 rounded-full"
+                    style={{ background: c }}
+                  />
                 ))}
               </div>
 
@@ -534,7 +755,10 @@ export default function LearningSection() {
                     <span className="text-[10px]">{p.fileIcon}</span>
                     <span
                       className="font-mono text-[10px] transition-colors duration-300"
-                      style={{ color: activePhase === i ? "#fff" : "rgba(255,255,255,0.38)" }}
+                      style={{
+                        color:
+                          activePhase === i ? "#fff" : "rgba(255,255,255,0.38)",
+                      }}
                     >
                       {p.filename}
                     </span>
@@ -542,7 +766,9 @@ export default function LearningSection() {
                 ))}
               </div>
 
-              <span className="font-mono text-[9px] text-white/15 tracking-widest">DEV ODYSSEY</span>
+              <span className="font-mono text-[9px] text-white/15 tracking-widest">
+                DEV ODYSSEY
+              </span>
             </div>
 
             {/* Progress bar row */}
@@ -562,9 +788,16 @@ export default function LearningSection() {
                     </div>
                     <span
                       className="font-mono text-[9px] uppercase tracking-wide whitespace-nowrap"
-                      style={{ color: lineCounts[i] > 0 ? p.color : "rgba(255,255,255,0.18)" }}
+                      style={{
+                        color:
+                          lineCounts[i] > 0
+                            ? p.color
+                            : "rgba(255,255,255,0.18)",
+                      }}
                     >
-                      {lineCounts[i] >= p.lines.length ? `${p.label} ✓` : p.label}
+                      {lineCounts[i] >= p.lines.length
+                        ? `${p.label} ✓`
+                        : p.label}
                     </span>
                   </div>
                 ))}
@@ -574,15 +807,18 @@ export default function LearningSection() {
             {/* Main body */}
             <div className="flex bg-[#0d1117] flex-wrap">
               {/* LEFT — code panels */}
-              <div className="flex-1 min-w-0 p-3.5 flex flex-col gap-2.5 border-r border-white/5"
-                style={{ flexBasis: "380px" }}>
+              <div
+                className="flex-1 min-w-0 p-3.5 flex flex-col gap-2.5 border-r border-white/5"
+                style={{ flexBasis: "380px" }}
+              >
                 {PHASES.map((_, i) => (
                   <div
                     key={i}
                     className="transition-all duration-500"
                     style={{
                       opacity: lineCounts[i] > 0 ? 1 : 0.16,
-                      transform: lineCounts[i] > 0 ? "translateY(0)" : "translateY(6px)",
+                      transform:
+                        lineCounts[i] > 0 ? "translateY(0)" : "translateY(6px)",
                     }}
                   >
                     <CodePanel
@@ -595,19 +831,33 @@ export default function LearningSection() {
               </div>
 
               {/* RIGHT — preview + status */}
-              <div className="flex flex-col bg-[#0a0f13]" style={{ flex: "0 1 300px", minWidth: 220 }}>
+              <div
+                className="flex flex-col bg-[#0a0f13]"
+                style={{ flex: "0 1 300px", minWidth: 220 }}
+              >
                 {/* Emotion header */}
                 <div className="flex items-center gap-2 px-3.5 py-2.5 border-b border-white/5">
                   <span className="text-[13px]">
-                    {activePhase >= 0 ? PHASES[activePhase].emotionEmoji : allDone ? "🚀" : "👁️"}
+                    {activePhase >= 0
+                      ? PHASES[activePhase].emotionEmoji
+                      : allDone
+                        ? "🚀"
+                        : "👁️"}
                   </span>
                   <span
                     className="font-mono text-[10px] tracking-widest uppercase transition-colors duration-500"
                     style={{
-                      color: activePhase >= 0 ? PHASES[activePhase].color : "rgba(255,255,255,0.22)",
+                      color:
+                        activePhase >= 0
+                          ? PHASES[activePhase].color
+                          : "rgba(255,255,255,0.22)",
                     }}
                   >
-                    {activePhase >= 0 ? PHASES[activePhase].desc : allDone ? "All systems go!" : "Waiting..."}
+                    {activePhase >= 0
+                      ? PHASES[activePhase].desc
+                      : allDone
+                        ? "All systems go!"
+                        : "Waiting..."}
                   </span>
                 </div>
 
@@ -624,17 +874,27 @@ export default function LearningSection() {
                   <span
                     className="font-mono text-[9px] flex items-center gap-1.5 transition-colors duration-500"
                     style={{
-                      color: activePhase >= 0 ? PHASES[activePhase].color : allDone ? "#00ff88" : "rgba(255,255,255,0.2)",
+                      color:
+                        activePhase >= 0
+                          ? PHASES[activePhase].color
+                          : allDone
+                            ? "#00ff88"
+                            : "rgba(255,255,255,0.2)",
                     }}
                   >
                     <span
                       className="w-1.5 h-1.5 rounded-full inline-block"
                       style={{
                         background: "currentColor",
-                        animation: activePhase >= 0 ? "pulse 1.5s infinite" : "none",
+                        animation:
+                          activePhase >= 0 ? "pulse 1.5s infinite" : "none",
                       }}
                     />
-                    {activePhase >= 0 ? "Compiling..." : allDone ? "Done ✓" : "Ready"}
+                    {activePhase >= 0
+                      ? "Compiling..."
+                      : allDone
+                        ? "Done ✓"
+                        : "Ready"}
                   </span>
                   <span className="font-mono text-[9px] text-white/18">
                     {lineCounts.reduce((a, b) => a + b, 0)} lines
@@ -647,10 +907,15 @@ export default function LearningSection() {
           {/* Bottom caption */}
           {allDone && (
             <div className="text-center mt-5 font-mono text-[12px] text-white/20 leading-loose animate-[fadeIn_0.7s_ease]">
-              HTML gave you structure. CSS gave you style. JavaScript gave you power.<br />
+              HTML gave you structure. CSS gave you style. JavaScript gave you
+              power.
+              <br />
               <span
                 className="font-bold text-[14px] tracking-tight bg-clip-text text-transparent"
-                style={{ backgroundImage: "linear-gradient(90deg,#e34c26,#264de4,#f7df1e)" }}
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg,#e34c26,#264de4,#f7df1e)",
+                }}
               >
                 You are no longer a beginner. 🚀
               </span>
@@ -664,8 +929,12 @@ export default function LearningSection() {
             <span className="font-mono text-[9px] tracking-[0.28em] text-white/15 uppercase">
               scroll to start
             </span>
-            <div className="w-px h-9"
-              style={{ background: "linear-gradient(to bottom,rgba(255,255,255,0.2),transparent)" }}
+            <div
+              className="w-px h-9"
+              style={{
+                background:
+                  "linear-gradient(to bottom,rgba(255,255,255,0.2),transparent)",
+              }}
             />
           </div>
         )}

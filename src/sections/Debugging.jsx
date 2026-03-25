@@ -195,7 +195,7 @@ function ConsolePanel({ visible, errorVisible, fixedVisible }) {
         <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
         <span className="font-mono text-[10px] text-white/20 ml-2 tracking-wider uppercase">Console</span>
       </div>
-      <div className="bg-[#080d10] p-3 space-y-1.5 min-h-[90px]">
+      <div className="bg-[#080d10] p-3 space-y-1.5 min-h-22.5">
         {errorVisible && !fixedVisible && (
           <>
             <p className="font-mono text-[11px] text-red-400 animate-[slideDown_0.3s_ease]">
@@ -238,6 +238,7 @@ function ConsolePanel({ visible, errorVisible, fixedVisible }) {
 ══════════════════════════════════════════════════════ */
 export default function DebuggingSection() {
   const sectionRef   = useRef();
+  const mainLayoutRef   = useRef();
   const headerRef    = useRef();
   const editorRef    = useRef();
   const consoleRef   = useRef();
@@ -271,7 +272,7 @@ export default function DebuggingSection() {
     tl.call(() => { setPhase("typing"); setConsoleVisible(true); }, [], 0.2);
 
     for (let i = 1; i <= CODE_LINES.length; i++) {
-      tl.call(() => setVisibleLines(i), [], (i - 1) * 0.13 + 0.3);
+      tl.call(() => setVisibleLines(i), [], (i - 1) * 0.35 + 0.6);
     }
 
     const afterType = CODE_LINES.length * 0.13 + 0.3;
@@ -280,13 +281,13 @@ export default function DebuggingSection() {
     tl.call(() => {
       setErrorActive(true);
       setPhase("error");
-    }, [], afterType + 0.4);
+    }, [], afterType + 1);
 
     // Step 3 — Glitch state on
     tl.call(() => {
       setGlitching(true);
       setPhase("glitch");
-    }, [], afterType + 0.7);
+    }, [], afterType + 1.5);
 
     // Step 3 — Shake editor via staggered tweens (avoid gsap.utils.wrap misuse)
     const shakeStart = afterType + 0.7;
@@ -350,8 +351,8 @@ export default function DebuggingSection() {
     });
     // Main sequence trigger
     ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top 36%",
+      trigger: mainLayoutRef.current,
+      start: "top 25%",
       onEnter: () => runSequence(),
     });
 
@@ -423,7 +424,7 @@ export default function DebuggingSection() {
         {/* Scanline effect */}
         {glitching && (
           <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-            <div className="w-full h-[2px] bg-red-500/20"
+            <div className="w-full h-0.5 bg-red-500/20"
               style={{ animation: "scanline 0.5s linear infinite" }} />
           </div>
         )}
@@ -485,7 +486,7 @@ export default function DebuggingSection() {
         </div>
 
         {/* ── MAIN LAYOUT ── */}
-        <div className="relative z-10 w-full max-w-[1100px] flex flex-col lg:flex-row gap-4 sm:gap-5">
+        <div ref={mainLayoutRef} className="relative z-10 w-full max-w-275 flex flex-col lg:flex-row gap-4 sm:gap-5">
 
           {/* ── LEFT: VS CODE EDITOR ── */}
           <div ref={editorRef} className="opacity-0 flex-1 min-w-0">
@@ -547,7 +548,7 @@ export default function DebuggingSection() {
                       <span className="font-mono text-[11px] text-white/10 w-10 text-right pr-4">
                         {visibleLines + 1}
                       </span>
-                      <span className="inline-block w-[2px] h-[14px] bg-yellow-300/80 animate-[blink_0.9s_infinite]" />
+                      <span className="inline-block w-0.5 h-3.5 bg-yellow-300/80 animate-[blink_0.9s_infinite]" />
                     </div>
                   )}
                 </div>
@@ -601,7 +602,7 @@ export default function DebuggingSection() {
                   {successVisible ? "Relief Mode" : confusionVisible ? "Frustration Log" : "Developer Status"}
                 </span>
               </div>
-              <div className="p-4 space-y-3 min-h-[120px]">
+              <div className="p-4 space-y-3 min-h-30">
                 {!confusionVisible && !successVisible && (
                   <p className="font-mono text-[11px] text-white/18 animate-[pulse_2s_infinite]">
                     Coding with confidence...
@@ -698,7 +699,7 @@ export default function DebuggingSection() {
 
         {/* ── SUCCESS BANNER ── */}
         {successVisible && (
-          <div className="relative z-10 w-full max-w-[1100px] mt-5 animate-[fadeIn_0.7s_ease]">
+          <div className="relative z-10 w-full max-w-275 mt-5 animate-[fadeIn_0.7s_ease]">
             <div className="rounded-2xl border border-emerald-700/30 bg-emerald-950/25 px-5 py-4
               flex flex-wrap items-center justify-between gap-4
               shadow-[0_0_50px_rgba(16,185,129,0.08)]">
@@ -738,7 +739,7 @@ export default function DebuggingSection() {
             <span className="font-mono text-[9px] tracking-[0.28em] text-red-500/25 uppercase">
               scroll to debug
             </span>
-            <div className="w-px h-8 bg-gradient-to-b from-red-500/20 to-transparent" />
+            <div className="w-px h-8 bg-linear-to-b from-red-500/20 to-transparent" />
           </div>
         )}
       </section>
