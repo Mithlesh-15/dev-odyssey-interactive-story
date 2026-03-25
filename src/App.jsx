@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./sections/Hero";
 import LearningSection from "./sections/Learning";
+import DebuggingSection from "./sections/Debugging";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,7 +27,9 @@ function App() {
         <>
           <Hero onStart={() => setShowLearning(true)} />
 
-          {showLearning && <LearningSection />}
+          {showLearning && <><LearningSection />
+          <DebuggingSection />
+          </>}
         </>
       )}
     </>

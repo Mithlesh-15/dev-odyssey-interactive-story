@@ -99,7 +99,7 @@ function PreviewPanel({ cssActive, jsActive }) {
   };
 
   return (
-    <div className={`relative overflow-hidden rounded-xl p-4 min-h-[150px] transition-all duration-700
+    <div className={`relative overflow-hidden rounded-xl p-4 min-h-37.5 transition-all duration-700
       ${cssActive
         ? "bg-[#0d1117] border border-emerald-500/20"
         : "bg-[#1e1e1e] border border-white/5"
@@ -197,7 +197,7 @@ function CodePanel({ phaseIdx, visibleCount, isActive }) {
       </div>
 
       {/* Code area */}
-      <div className="p-3 relative min-h-[80px]">
+      <div className="p-3 relative min-h-20">
         {/* Tooltip */}
         {tooltip && phaseIdx === 0 && (
           <div className="absolute top-1.5 right-1.5 z-20 bg-[#1a2a1f] border border-emerald-500/30
@@ -423,7 +423,7 @@ export default function LearningSection() {
           {symbols.map((s, i) => (
             <span
               key={i}
-              className="absolute font-mono select-none text-white/[0.045]"
+              className="absolute font-mono select-none text-white/4.5"
               style={{
                 left: `${4 + (i * 8.2) % 90}%`,
                 top: `${8 + (i * 12) % 82}%`,
@@ -466,7 +466,7 @@ export default function LearningSection() {
           </h2>
 
           <p
-            className="font-mono text-white/25 leading-[1.9] max-w-[460px] mx-auto"
+            className="font-mono text-white/25 leading-[1.9] max-w-115 mx-auto"
             style={{ fontSize: "clamp(11px,1.3vw,13px)" }}
           >
             It starts with a single tag. Then styles. Then logic.<br />
@@ -481,12 +481,12 @@ export default function LearningSection() {
         {/* ── EDITOR ── */}
         <div
           ref={editorRef}
-          className="opacity-0 relative z-10 w-full max-w-[1080px]"
+          className="opacity-0 relative z-10 w-full max-w-270"
         >
           {/* Achievement toast */}
           {achievement && (
             <div
-              className="fixed top-4 right-4 z-[100] flex items-center gap-3 bg-[#111318]
+              className="fixed top-4 right-4 z-100 flex items-center gap-3 bg-[#111318]
                 rounded-2xl px-4 py-3 animate-[achievePop_0.5s_ease_forwards]"
               style={{
                 border: `1px solid ${PHASES[Math.max(0, activePhase)]?.color ?? "#fff"}44`,
