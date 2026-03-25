@@ -3,6 +3,8 @@ import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./sections/Hero";
 import LearningSection from "./sections/Learning";
 import DebuggingSection from "./sections/Debugging";
+import DeadlineSection from "./sections/Deadline";
+import ConclusionSection from "./sections/Conclusion";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +31,8 @@ function App() {
 
           {showLearning && <><LearningSection />
           <DebuggingSection />
+          <DeadlineSection />
+          <ConclusionSection />
           </>}
         </>
       )}
