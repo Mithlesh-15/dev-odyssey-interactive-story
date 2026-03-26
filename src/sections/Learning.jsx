@@ -523,11 +523,9 @@ export default function LearningSection({ onComplete }) {
 
     const tl = gsap.timeline({
       onComplete: () => {
-        setTimeout(() => {
           setActivePhase(-1);
           setAllDone(true);
           if (onComplete) onComplete();
-        }, 1500);
       },
     });
     tlRef.current = tl;

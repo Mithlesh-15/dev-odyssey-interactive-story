@@ -278,9 +278,8 @@ export default function DeadlineSection({ onComplete }) {
 
     const tl = gsap.timeline({
   onComplete: () => {
-    setTimeout(() => {
       if (onComplete) onComplete();
-    }, 2000);
+    
   },
 });
 
