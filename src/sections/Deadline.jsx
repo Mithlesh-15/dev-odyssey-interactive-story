@@ -186,7 +186,7 @@ function Notif({ notif, onDone }) {
 /* ═══════════════════════════════════════════
    MAIN SECTION
 ═══════════════════════════════════════════ */
-export default function DeadlineSection() {
+export default function DeadlineSection({ onComplete }) {
   const sectionRef   = useRef();
   const wrapRef      = useRef();
   const shakeRef     = useRef();
@@ -276,7 +276,13 @@ export default function DeadlineSection() {
     if (startedRef.current) return;
     startedRef.current = true;
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+  onComplete: () => {
+    setTimeout(() => {
+      if (onComplete) onComplete();
+    }, 2000);
+  },
+});
 
     // ── STEP 1: Calm ──
     tl.call(() => {
@@ -413,6 +419,7 @@ export default function DeadlineSection() {
 
       <section
         ref={sectionRef}
+        id="deadline-section"
         className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
         style={{
           background: isDone

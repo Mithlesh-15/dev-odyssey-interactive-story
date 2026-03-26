@@ -211,7 +211,7 @@ function StatItem({ label, value, delay }) {
 /* ══════════════════════════════════════════
    MAIN COMPONENT
 ══════════════════════════════════════════ */
-export default function ConclusionSection() {
+export default function ConclusionSection({ onComplete }) {
   const sectionRef = useRef();
   const checkWrapRef = useRef();
   const headingRef = useRef();
@@ -287,7 +287,12 @@ export default function ConclusionSection() {
   }, [entered]);
 
   function runAnimation() {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+      onComplete: () => {
+        if (onComplete) onComplete();
+      },
+    });
 
     // Initial states
     gsap.set(
@@ -316,6 +321,7 @@ export default function ConclusionSection() {
   return (
     <section
       ref={sectionRef}
+      id="conclusion-section"
       style={{
         position: "relative",
         minHeight: "100vh",

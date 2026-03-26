@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import Hero from "./sections/Hero";
 import LearningSection from "./sections/Learning";
@@ -8,18 +8,42 @@ import ConclusionSection from "./sections/Conclusion";
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [showLearning, setShowLearning] = useState(false);
+  const [startJourney, setStartJourney] = useState(false);
 
-  // ✅ scroll AFTER render
-  useEffect(() => {
-    if (showLearning) {
-      setTimeout(() => {
-        document.getElementById("learning-section")?.scrollIntoView({
-          behavior: "smooth",
-        });
-      }, 100); // small delay for DOM render
+  const [learningDone, setLearningDone] = useState(false);
+  const [debuggingDone, setDebuggingDone] = useState(false);
+  const [deadlineDone, setDeadlineDone] = useState(false);
+
+  const scrollToId = useCallback((id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [showLearning]);
+  }, []);
+
+  const rafScroll = useCallback(
+    (id) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => scrollToId(id)));
+    },
+    [scrollToId],
+  );
+
+  // scroll to learning
+  useEffect(() => {
+    if (startJourney) rafScroll("learning-section");
+  }, [startJourney, rafScroll]);
+
+  useEffect(() => {
+    if (learningDone) rafScroll("debugging-section");
+  }, [learningDone, rafScroll]);
+
+  useEffect(() => {
+    if (debuggingDone) rafScroll("deadline-section");
+  }, [debuggingDone, rafScroll]);
+
+  useEffect(() => {
+    if (deadlineDone) rafScroll("conclusion-section");
+  }, [deadlineDone, rafScroll]);
 
   return (
     <>
@@ -27,13 +51,25 @@ function App() {
         <LoadingScreen onFinish={() => setLoading(false)} />
       ) : (
         <>
-          <Hero onStart={() => setShowLearning(true)} />
+          <Hero onStart={() => setStartJourney(true)} />
 
-          {showLearning && <><LearningSection />
-          <DebuggingSection />
-          <DeadlineSection />
-          <ConclusionSection />
-          </>}
+          {startJourney && (
+            <>
+              <LearningSection onComplete={() => setLearningDone(true)} />
+
+              {learningDone && (
+                <DebuggingSection onComplete={() => setDebuggingDone(true)} />
+              )}
+
+              {debuggingDone && (
+                <DeadlineSection onComplete={() => setDeadlineDone(true)} />
+              )}
+
+              {deadlineDone && (
+                <ConclusionSection onComplete={() => {}} />
+              )}
+            </>
+          )}
         </>
       )}
     </>

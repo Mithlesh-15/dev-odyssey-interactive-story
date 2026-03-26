@@ -236,7 +236,7 @@ function ConsolePanel({ visible, errorVisible, fixedVisible }) {
 /* ══════════════════════════════════════════════════════
    MAIN EXPORT
 ══════════════════════════════════════════════════════ */
-export default function DebuggingSection() {
+export default function DebuggingSection({ onComplete }) {
   const sectionRef   = useRef();
   const mainLayoutRef   = useRef();
   const headerRef    = useRef();
@@ -265,7 +265,13 @@ export default function DebuggingSection() {
     hasStartedRef.current = true;
     setStarted(true);
 
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+  onComplete: () => {
+    setTimeout(() => {
+      if (onComplete) onComplete();
+    }, 2500);
+  },
+});
     tlRef.current = tl;
 
     // Step 1 — Type code lines one by one
@@ -352,7 +358,7 @@ export default function DebuggingSection() {
     // Main sequence trigger
     ScrollTrigger.create({
       trigger: mainLayoutRef.current,
-      start: "top 25%",
+      start: "top 50%",
       onEnter: () => runSequence(),
     });
 
@@ -402,6 +408,7 @@ export default function DebuggingSection() {
 
       <section
         ref={sectionRef}
+        id="debugging-section"
         className="relative min-h-screen bg-[#06080b] flex flex-col items-center
           justify-center overflow-hidden px-4 sm:px-6 md:px-10 py-16 sm:py-20"
       >

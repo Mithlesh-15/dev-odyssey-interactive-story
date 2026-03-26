@@ -478,10 +478,12 @@ function EmotionBar({ activePhase }) {
 /* ══════════════════════════════════════════════
    MAIN EXPORT
 ══════════════════════════════════════════════ */
-export default function LearningSection() {
+export default function LearningSection({ onComplete }) {
   const sectionRef = useRef();
   const headerRef = useRef();
   const editorRef = useRef();
+  const tlRef = useRef();
+  const startedRef = useRef(false);
 
   const [activePhase, setActivePhase] = useState(-1);
   const [lineCounts, setLineCounts] = useState([0, 0, 0]);
@@ -510,38 +512,76 @@ export default function LearningSection() {
     { title: "JavaScript Unlocked 🟡", sub: "Now it actually does things!" },
   ];
 
-  const typePhase = (idx, onDone) => {
-    setActivePhase(idx);
-    setAchievement(TOASTS[idx]);
-    setTimeout(() => setAchievement(null), 2600);
-
-    let i = 0;
-    const total = PHASES[idx].lines.length;
-    const iv = setInterval(() => {
-      i++;
-      setLineCounts((prev) => {
-        const n = [...prev];
-        n[idx] = i;
-        return n;
-      });
-      if (i >= total) {
-        clearInterval(iv);
-        setTimeout(() => onDone?.(), 500);
-      }
-    }, 210);
-  };
-
   const startSequence = () => {
-    if (started) return;
+    if (startedRef.current) return;
+    startedRef.current = true;
     setStarted(true);
-    typePhase(0, () =>
-      typePhase(1, () =>
-        typePhase(2, () => {
+    setActivePhase(-1);
+    setLineCounts([0, 0, 0]);
+    setAchievement(null);
+    setAllDone(false);
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setTimeout(() => {
           setActivePhase(-1);
           setAllDone(true);
-        }),
-      ),
+          if (onComplete) onComplete();
+        }, 1500);
+      },
+    });
+    tlRef.current = tl;
+
+    // Entrance
+    tl.to(
+      headerRef.current,
+      { opacity: 1, y: 0, duration: 0.95, ease: "power3.out" },
+      0,
     );
+    tl.to(
+      editorRef.current,
+      { opacity: 1, y: 0, scale: 1, duration: 1.05, ease: "power3.out" },
+      0.15,
+    );
+
+    const LINE_DELAY = 0.21;
+    const LINE_START = 0.35;
+    const PHASE_GAP = 0.5;
+    const TOAST_DURATION = 2.6;
+
+    let cursor = tl.duration() + 0.2;
+
+    PHASES.forEach((phase, idx) => {
+      const phaseStart = cursor;
+      tl.call(
+        () => {
+          setActivePhase(idx);
+          setAchievement(TOASTS[idx]);
+        },
+        [],
+        phaseStart,
+      );
+      tl.call(() => setAchievement(null), [], phaseStart + TOAST_DURATION);
+
+      for (let i = 1; i <= phase.lines.length; i++) {
+        const t = phaseStart + LINE_START + i * LINE_DELAY;
+        tl.call(
+          () => {
+            setLineCounts((prev) => {
+              const n = [...prev];
+              n[idx] = i;
+              return n;
+            });
+          },
+          [],
+          t,
+        );
+      }
+
+      cursor =
+        phaseStart + LINE_START + phase.lines.length * LINE_DELAY + PHASE_GAP;
+      tl.to({}, { duration: 0.01 }, cursor);
+    });
   };
 
   useEffect(() => {
@@ -573,6 +613,7 @@ export default function LearningSection() {
         trigger: editorRef.current,
         start: "top 50%",
         onEnter: () => startSequence(),
+        once: true,
       });
     }, sectionRef);
     return () => ctx.revert();
