@@ -33,17 +33,7 @@ function App() {
     if (startJourney) rafScroll("learning-section");
   }, [startJourney, rafScroll]);
 
-  useEffect(() => {
-    if (learningDone) rafScroll("debugging-section");
-  }, [learningDone, rafScroll]);
-
-  useEffect(() => {
-    if (debuggingDone) rafScroll("deadline-section");
-  }, [debuggingDone, rafScroll]);
-
-  useEffect(() => {
-    if (deadlineDone) rafScroll("conclusion-section");
-  }, [deadlineDone, rafScroll]);
+  // Auto-scroll between sections intentionally disabled.
 
   return (
     <>
