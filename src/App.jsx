@@ -5,6 +5,7 @@ import LearningSection from "./sections/Learning";
 import DebuggingSection from "./sections/Debugging";
 import DeadlineSection from "./sections/Deadline";
 import ConclusionSection from "./sections/Conclusion";
+import ProgressBar from "./components/ProgressBar";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -13,6 +14,13 @@ function App() {
   const [learningDone, setLearningDone] = useState(false);
   const [debuggingDone, setDebuggingDone] = useState(false);
   const [deadlineDone, setDeadlineDone] = useState(false);
+
+  let progress = 0;
+
+if (startJourney) progress = 20;
+if (learningDone) progress = 40;
+if (debuggingDone) progress = 70;
+if (deadlineDone) progress = 100;
 
   const scrollToId = useCallback((id) => {
     const el = document.getElementById(id);
@@ -41,6 +49,7 @@ function App() {
         <LoadingScreen onFinish={() => setLoading(false)} />
       ) : (
         <>
+        <ProgressBar progress={progress} />
           <Hero onStart={() => setStartJourney(true)} />
 
           {startJourney && (
