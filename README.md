@@ -86,13 +86,13 @@ Unlike traditional websites, this project:
 
 ## 🚀 Live Demo
 
-👉 [Link]
+👉 https://dev-odyssey-hackthon.netlify.app
 
 ---
 
 ## 💻 GitHub Repository
 
-👉 [Link]
+👉 https://github.com/Mithlesh-15/dev-odyssey-interactive-story
 
 ---
 
